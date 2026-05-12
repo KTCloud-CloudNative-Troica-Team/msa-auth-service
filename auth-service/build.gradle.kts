@@ -33,6 +33,10 @@ dependencies {
     implementation("io.grpc:grpc-kotlin-stub:${Versions.GRPC_KOTLIN}")
     implementation("io.grpc:grpc-netty-shaded:${Versions.GRPC}")
 
+    // Netty CVE override — Lettuce(Redis client)가 netty-codec 4.1.132를 가져옴.
+    // CVE-2026-42583 (Lz4FrameDecoder DoS) fix는 4.1.133.Final.
+    implementation("io.netty:netty-codec:4.1.133.Final")
+
     runtimeOnly("org.postgresql:postgresql:42.7.11")
 }
 
