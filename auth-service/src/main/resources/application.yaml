@@ -1,0 +1,47 @@
+# Base 설정. 환경별 application-{dev,prod}.yaml이 덮어쓴다.
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://${AUTH_DB_HOST:localhost}:${AUTH_DB_PORT:7007}/${AUTH_DB_NAME:auth_db}
+    username: ${AUTH_DB_USERNAME:auth-service}
+    password: ${AUTH_DB_PASSWORD:auth-service}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+    show-sql: ${JPA_SHOW_SQL:false}
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:7006}
+      password: ${REDIS_PASSWORD:auth-service}
+
+# JWT secret — 환경변수 ${JWT_SECRET}으로 주입 (R-25: Phase 0 후 ExternalSecrets 정식 운영).
+# 본 default 값은 모노레포 PoC 시연용. 운영 환경에서는 반드시 override.
+jwt:
+  secret: ${JWT_SECRET:v7S6A9yB2E5H8KcNfUjXnZr4u7x!A%D*G-}
+
+server:
+  port: ${SERVER_PORT:8005}
+
+grpc:
+  server:
+    port: ${GRPC_SERVER_PORT:9005}
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, info, prometheus
+      path-mapping:
+        health: healthz
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
