@@ -8,7 +8,7 @@ plugins {
 }
 
 object Versions {
-    const val GRPC = "1.68.1"
+    const val GRPC = "1.75.0"
     const val GRPC_KOTLIN = "1.4.1"
     const val PROTOBUF = "4.34.1"
 }
@@ -33,7 +33,7 @@ dependencies {
     implementation("io.grpc:grpc-kotlin-stub:${Versions.GRPC_KOTLIN}")
     implementation("io.grpc:grpc-netty-shaded:${Versions.GRPC}")
 
-    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("org.postgresql:postgresql:42.7.11")
 }
 
 sourceSets {
