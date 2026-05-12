@@ -20,10 +20,12 @@ spring:
       port: ${REDIS_PORT:7006}
       password: ${REDIS_PASSWORD:auth-service}
 
-# JWT secret — 환경변수 ${JWT_SECRET}으로 주입 (R-25: Phase 0 후 ExternalSecrets 정식 운영).
-# 본 default 값은 모노레포 PoC 시연용. 운영 환경에서는 반드시 override.
+# JWT secret — 반드시 환경변수 ${JWT_SECRET}으로 주입 (Phase 5에서 ExternalSecrets로 정식 운영).
+# fallback 값은 명백한 placeholder. 운영에서 이 값이 사용되면 즉시 인지 + 거부 가능하도록.
+# (R-25 Phase 1 fix: 모노레포의 실제 평문 secret을 placeholder로 치환. git history엔 남지만
+# 향후 CI 또는 컨테이너 startup gate가 placeholder 거부 가능.)
 jwt:
-  secret: ${JWT_SECRET:v7S6A9yB2E5H8KcNfUjXnZr4u7x!A%D*G-}
+  secret: ${JWT_SECRET:DEV_ONLY_INSECURE_REPLACE_ME_WITH_REAL_SECRET}
 
 server:
   port: ${SERVER_PORT:8005}
