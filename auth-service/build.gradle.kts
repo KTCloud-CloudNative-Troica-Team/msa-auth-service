@@ -18,7 +18,7 @@ dependencies {
 
     // user 라이브러리 — AuthGrpcControllerAdapter가 CreateUserCommand 등 직접 호출
     implementation("com.troica.msa:user:0.1.0")
-    implementation("com.troica.msa:common:0.3.0")
+    implementation("com.troica.msa:common:0.3.1")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
