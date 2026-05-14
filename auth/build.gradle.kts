@@ -19,4 +19,9 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:${Versions.JWT}")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:${Versions.JWT}")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:${Versions.JWT}")
+
+    // R-57: 단위 테스트 — JUnit 5 + AssertJ + Mockito
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // Gradle 8.x + JUnit Platform 1.12+ 에서 launcher 명시 필요 (OutputDirectoryProvider)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
