@@ -19,4 +19,7 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:${Versions.JWT}")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:${Versions.JWT}")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:${Versions.JWT}")
+
+    // R-57: 단위 테스트 — JUnit 5 + AssertJ + Mockito
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
